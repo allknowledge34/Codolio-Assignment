@@ -11,6 +11,7 @@ const TaskColumn = ({
     handleDelete,
     setActiveCard,
     onDrop,
+    updateTask   
 }) => {
     return (
         <section className="task_column">
@@ -31,12 +32,7 @@ const TaskColumn = ({
                                 index={index}
                                 setActiveCard={setActiveCard}
                                 handleDelete={handleDelete}
-                                updateTask={(updatedTask) => {
-                                    const copy = [...tasks];
-                                    copy[index] = { ...copy[index], ...updatedTask };
-                                    setActiveCard(null);
-                                    handleDelete(-1); 
-                                }}
+                                updateTask={(updatedTask) => updateTask(index, updatedTask)}
                             />
 
                             <DropArea onDrop={() => onDrop(status, index + 1)} />
