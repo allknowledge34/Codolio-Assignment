@@ -37,7 +37,7 @@ const TaskForm = ({ setTasks }) => {
           name="task"
           value={taskData.task}
           className="task_input"
-          placeholder="Enter Question (e.g. Two Sum)"
+          placeholder="Enter Question"
           onChange={handleChange}
         />
 
@@ -46,7 +46,7 @@ const TaskForm = ({ setTasks }) => {
           name="topic"
           value={taskData.topic}
           className="task_input"
-          placeholder="Enter Topic (e.g. Arrays)"
+          placeholder="Enter Topic"
           onChange={handleChange}
         />
 
@@ -55,7 +55,7 @@ const TaskForm = ({ setTasks }) => {
           name="subTopic"
           value={taskData.subTopic}
           className="task_input"
-          placeholder="Enter Sub-topic (e.g. Two Pointer)"
+          placeholder="Enter Sub-topic"
           onChange={handleChange}
         />
 
@@ -81,3 +81,4 @@ const TaskForm = ({ setTasks }) => {
 };
 
 export default TaskForm;
+
