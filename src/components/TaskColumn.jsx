@@ -1,15 +1,21 @@
 import React from "react";
-
 import "./TaskColumn.css";
 import TaskCard from "./TaskCard";
 import DropArea from "./DropArea";
 
-
-const TaskColumn = ({ title, icon, tasks, status, handleDelete, setActiveCard, onDrop }) => {
+const TaskColumn = ({
+    title,
+    icon,
+    tasks,
+    status,
+    handleDelete,
+    setActiveCard,
+    onDrop,
+}) => {
     return (
-        <section className='task_column'>
-            <h2 className='task_column_heading'>
-                <img className='task_column_icon' src={icon} alt='' /> {title}
+        <section className="task_column">
+            <h2 className="task_column_heading">
+                <img className="task_column_icon" src={icon} alt="" /> {title}
             </h2>
 
             <DropArea onDrop={() => onDrop(status, 0)} />
@@ -20,12 +26,20 @@ const TaskColumn = ({ title, icon, tasks, status, handleDelete, setActiveCard, o
                         <React.Fragment key={index}>
                             <TaskCard
                                 title={task.task}
-                                tags={task.tags}
-                                handleDelete={handleDelete}
+                                topic={task.topic}
+                                subTopic={task.subTopic}
                                 index={index}
                                 setActiveCard={setActiveCard}
+                                handleDelete={handleDelete}
+                                updateTask={(updatedTask) => {
+                                    const copy = [...tasks];
+                                    copy[index] = { ...copy[index], ...updatedTask };
+                                    setActiveCard(null);
+                                    handleDelete(-1); 
+                                }}
                             />
-                            <DropArea onDrop={() => onDrop(status, index + 1)}/>
+
+                            <DropArea onDrop={() => onDrop(status, index + 1)} />
                         </React.Fragment>
                     )
             )}
