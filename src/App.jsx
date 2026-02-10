@@ -40,6 +40,13 @@ const App = () => {
     setTasks(updatedTasks)
   };
 
+  const updateTask = (index, updatedTask) => {
+    const copy = [...tasks];
+    copy[index] = { ...copy[index], ...updatedTask };
+    setTasks(copy);
+  };
+
+
   return (
     <div className="app">
       <TaskForm setTasks={setTasks} />
@@ -52,6 +59,7 @@ const App = () => {
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}
+          updateTask={updateTask}
         />
         <TaskColumn
           title="Doing"
@@ -61,6 +69,7 @@ const App = () => {
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}
+          updateTask={updateTask}
         />
         <TaskColumn
           title="Done"
@@ -70,6 +79,7 @@ const App = () => {
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
           onDrop={onDrop}
+          updateTask={updateTask}
         />
       </main>
     </div>
